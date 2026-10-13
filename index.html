@@ -1,11 +1,541 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CognitoBrand — Derrick Xu</title>
-<style>body{font-family:-apple-system,Helvetica,Arial,sans-serif;max-width:680px;margin:48px auto;padding:0 16px;line-height:1.6;color:#111}a{color:#0a58ca}footer{margin-top:48px;font-size:14px;color:#555}</style></head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Derrick Xu — Real distributed systems, built with autonomous agents.</title>
+<meta name="description" content="Real distributed systems, built with autonomous agents.">
+<!-- {SITE_BASE_URL}: relative URLs preserve custom-domain and path-prefix portability. -->
+<link rel="canonical" href="./">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Derrick Xu — Real distributed systems, built with autonomous agents.">
+<meta property="og:description" content="Real distributed systems, built with autonomous agents.">
+<meta property="og:url" content="./">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Derrick Xu — Real distributed systems, built with autonomous agents.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Derrick Xu — Real distributed systems, built with autonomous agents.">
+<meta name="twitter:description" content="Real distributed systems, built with autonomous agents.">
+<meta name="twitter:image" content="og.png">
+<meta name="twitter:image:alt" content="Derrick Xu — Real distributed systems, built with autonomous agents.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h1>CognitoBrand</h1>
-<p><strong>Derrick Xu · AI Systems Builder.</strong> I build real systems with AI, then show what actually worked, what failed, and what still needs evidence.</p>
-<p>CognitoBrand is my personal publishing tool. It posts my own original content — short posts, threads, articles and short videos about software engineering and AI systems — to my own accounts on X, LinkedIn, YouTube, Instagram and TikTok. It does not collect data about other people.</p>
-<p>Portfolio: <a href="https://codefolio-dark-portfolio.derrick-xu84.chatgpt.site">codefolio-dark-portfolio.derrick-xu84.chatgpt.site</a></p>
-<footer><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a> · Contact: derrick.xu84@gmail.com</footer>
-</body></html>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap header-inner">
+<a class="brand" href="index.html">
+<span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+<span>DERRICK XU<small>ARCHITECT</small>
+</span>
+</a>
+<nav class="desktop-nav" aria-label="Main">
+<a href="#ai-usage">01 / AI usage</a>
+<a href="#systems">02 / Systems</a>
+<a href="#scale">03 / Scale</a>
+<a href="#principles">04 / Principles</a>
+<a href="#logs">05 / Logs</a>
+<a href="#channels">06 / Channels</a>
+</nav>
+<a class="btn nav-action" href="https://x.com/DerrickXu139635" rel="noopener">Follow on X</a>
+<details class="mobile-nav">
+<summary>Menu</summary>
+<nav aria-label="Main">
+<a href="#ai-usage">01 / AI usage</a>
+<a href="#systems">02 / Systems</a>
+<a href="#scale">03 / Scale</a>
+<a href="#principles">04 / Principles</a>
+<a href="#logs">05 / Logs</a>
+<a href="#channels">06 / Channels</a>
+</nav>
+</details>
+</div>
+</header>
+<main id="main" class="wrap">
+<section class="hero" aria-labelledby="hero-title">
+<div class="hero-copy">
+<p class="eyebrow">SYSTEMS ARCHITECT · MULTI-AGENT RUNTIMES</p>
+<h1 id="hero-title">Real distributed systems, <span class="lime">built with autonomous agents</span>.</h1>
+<p class="lead">18 years architecting high-throughput payment, financial, and distributed platforms, now building AI-native systems with multi-agent control planes. I document real-world engineering workflows, verification gates, and failure postmortems in public—grounded strictly in code history and execution logs, with no camera appearances, AI-narrated audio, and zero hype. Every published artifact is produced autonomously from authentic system records.</p>
+<div class="actions">
+<a class="btn primary" href="https://x.com/DerrickXu139635" rel="noopener">Follow on X</a>
+<a class="btn" href="#systems">Explore Systems</a>
+</div>
+<a class="aux-link" href="#logs">Read Engineering Logs ↓</a>
+</div>
+<div class="hero-artifact" aria-hidden="true">
+<p class="micro-label">SYSTEM-MINDED<br>DECOMPOSITION</p>
+<div class="pipeline">
+<span>Input</span>
+<span>State</span>
+<span>Rule</span>
+<span>Workflow</span>
+<span>Output</span>
+<span>Feedback Loop</span>
+</div>
+</div>
+</section>
+<section class="content-section usage-section" id="ai-usage" aria-labelledby="usage-title">
+<div class="section-head">
+<div>
+<p class="eyebrow">01 / AI-ASSISTED ENGINEERING</p>
+<h2 id="usage-title">My AI engineering activity, in numbers.</h2>
+</div>
+<p class="section-note">Codex account snapshot · Claude Code history from retained logs.</p>
+</div>
+<div class="usage-panel">
+<div class="usage-intro">
+<div>
+<div class="usage-label">Recorded tokens · Codex + Claude Code</div>
+<div id="usage-total" class="usage-main">Loading…</div>
+<div class="usage-label"><span id="usage-exact">Unavailable</span> combined recorded tokens</div>
+<div class="usage-label usage-breakdown">Codex <span id="usage-codex">Unavailable</span> + Claude Code <span>15,894,738,589</span>
+</div>
+<div class="usage-controls"><button id="usage-motion" type="button" aria-pressed="false" disabled>Pause motion</button><button id="usage-replay" type="button" disabled>Replay count-up</button>
+</div>
+</div>
+<div class="usage-meta"><span>Snapshot updated · Edmonton time</span><time id="usage-updated">Unavailable</time><span>Source: Codex account usage</span><span>Updated when the site is republished</span>
+</div>
+</div>
+<p class="usage-note">Codex: official account total. Claude Code: partial retained logs, Jan 15–Apr 24, 2026 (UTC), including cache. Different coverage and reporting methods; not a complete cross-platform lifetime total.</p>
+<div class="usage-label usage-milestones">Codex account milestones</div>
+<div class="usage-stats">
+<div class="usage-stat"><strong id="usage-peak">Unavailable</strong><span>Peak daily tokens</span>
+</div>
+<div class="usage-stat"><strong id="usage-turn">Unavailable</strong><span>Longest task duration</span>
+</div>
+<div class="usage-stat"><strong id="usage-longest">Unavailable</strong><span>Longest activity streak</span>
+</div>
+<div class="usage-stat"><strong id="usage-streak">Unavailable</strong><span>Current activity streak</span>
+</div>
+</div>
+<p class="usage-note">Count-up and rolling digits are visual effects. The reported total comes from the published usage.json snapshot.</p>
+<p id="usage-status" class="usage-note" role="status">Loading the published account snapshot…</p>
+<details class="scope-details">
+<summary>Source &amp; published snapshot</summary>
+<p>The Codex portion comes from the five account-wide aggregate fields in this site's usage.json, with its updated_at timestamp. These are an official account summary, not a sum of local thread totals. Usage measures activity, not software quality or a billing amount.</p>
+<p>This static page reads usage.json once when loaded and adds the fixed Claude Code historical count. It displays the snapshot timestamp in America/Edmonton. Updated when the site is republished; this page does not check a live account or poll for updates.</p>
+<p>The displayed fields are lifetime tokens, peak daily tokens, longest task duration, longest activity streak, and current activity streak. Conversation content, task names, account credentials, and session details are not displayed.</p>
+<p><a href="usage.json" target="_blank" rel="noopener">View aggregate data</a></p>
+</details>
+<details class="scope-details">
+<summary>Claude Code history & coverage</summary>
+<p>Input + output: 34,074,539 tokens. 63,098 deduplicated usage records. This historical snapshot is fixed; the Codex portion comes from the published usage.json snapshot.</p>
+<div class="history-table">
+<table><caption>Recorded Claude Code tokens, including cache · UTC months</caption>
+<thead>
+<tr><th scope="col">Month</th><th scope="col">Tokens</th></tr></thead>
+<tbody>
+<tr><td>January 2026</td><td>58,199,361</td></tr>
+<tr><td>February 2026</td><td>510,178,962</td></tr>
+<tr><td>March 2026</td><td>2,981,307,936</td></tr>
+<tr><td>April 2026</td><td>12,345,052,330</td></tr></tbody></table>
+</div>
+<p>Counted from retained Claude Code session logs on my MacBook, with streaming records deduplicated. January and April have partial date coverage. Missing months do not mean zero usage.</p>
+<p>Codex uses an official account summary; Claude Code uses local historical logs. The combined figure adds these two reported counts; coverage and reporting methods differ. It is not a complete, standardized lifetime total across both platforms. Cache tokens dominate this history; these figures are not billing amounts.</p>
+</details>
+<noscript>
+<p class="usage-note">Enable JavaScript to display the published Codex snapshot and combined total. The fixed Claude Code history remains available.</p></noscript>
+</div>
+</section>
+<section id="systems" class="content-section" aria-labelledby="systems-title">
+<div class="section-head">
+<div>
+<p class="eyebrow">02 / SYSTEMS</p>
+<h2 id="systems-title">Active Engines &amp; Multi-Agent Runtimes</h2>
+</div>
+<p class="section-note">Autonomous control planes, deterministic execution, and fail-closed gates.</p>
+</div>
+<div class="systems-grid">
+<article class="card system-card">
+<p class="badge">DEV CONTROL PLANE</p>
+<h3>local-dev-agent (LDA)</h3>
+<p>A multi-agent development control plane orchestrating specialized engineering roles, formal research admission and certification workflows, and sealed hand-offs between agents.</p>
+<div class="tags">
+<span>Multi-Agent</span>
+<span>Sealed Hand-offs</span>
+<span>Deterministic JSON</span>
+</div>
+</article>
+<article class="card system-card">
+<p class="badge">VERIFICATION GATE</p>
+<h3>quality-shield (QE Quality Lab)</h3>
+<p>The testing team defect-finding repository enforcing fail-closed release gates. Inspects provider-owned evidence and halts pipelines on missing evidence, hash drift, or self-claimed passes.</p>
+<div class="tags">
+<span>Fail-Closed</span>
+<span>Hash Integrity</span>
+<span>Audit Receipts</span>
+</div>
+</article>
+<article class="card system-card">
+<p class="badge">EXECUTION &amp; RESEARCH</p>
+<h3>QuantEngine &amp; QuantLab</h3>
+<p>Core quantitative trading engine providing exchange connectivity, real-time data processing, risk lifecycle management, and MCP automation, paired with an offline strategy research and scanning platform.</p>
+<div class="tags">
+<span>Real-time Processing</span>
+<span>Risk Controls</span>
+<span>MCP Tools</span>
+</div>
+</article>
+<article class="card system-card">
+<p class="badge">DATA &amp; ATTRIBUTION</p>
+<h3>tick-data-center &amp; market-causality</h3>
+<p>Fail-closed tick data warehouse that ingests, verifies manifests, and replays market facts, coupled with a read-only causal knowledge engine enforcing that inputs were available at decision time.</p>
+<div class="tags">
+<span>Replay Verifiability</span>
+<span>Causal Attribution</span>
+<span>Read-Only</span>
+</div>
+</article>
+<article class="card system-card">
+<!-- {HOLTON_URL}: inactive until public release. -->
+<p class="badge">COMING SOON</p>
+<h3>Holton Math Lab</h3>
+<p>A local-first, paper-first math thinking practice system for children built on an AoPS-style skill tree, where an autonomous agent extends daily problem sets outward from established mastery.</p>
+<div class="tags">
+<span>Local-First</span>
+<span>Paper-First</span>
+<span>AoPS Skill Tree</span>
+</div>
+</article>
+<article class="card system-card">
+<!-- {ENGLISHOS_URL}: inactive until public release. -->
+<p class="badge">COMING SOON</p>
+<h3>EnglishOS</h3>
+<p>An English acquisition and measurement platform where mastery is evaluated strictly by cold performance, transfer, retention, and authentic use, rather than passive time spent.</p>
+<div class="tags">
+<span>Cold Performance</span>
+<span>Transfer &amp; Retention</span>
+<span>Measurement-First</span>
+</div>
+</article>
+</div>
+</section>
+<section id="scale" class="content-section" aria-labelledby="scale-title">
+<div class="section-head">
+<div>
+<p class="eyebrow">03 / SCALE</p>
+<h2 id="scale-title">Operational Throughput &amp; Systems History</h2>
+</div>
+<p class="section-note">Audited token volume, platform reliability, and distributed systems performance.</p>
+</div>
+<div class="metrics-grid">
+<article class="card metric">
+<p class="metric-value">1.8B</p>
+<h3>Peak Single-Day Token Throughput</h3>
+<p class="scope">Recorded during intensive parallel multi-agent development runs.</p>
+</article>
+<article class="card metric">
+<p class="metric-value">71 Days</p>
+<h3>Longest Daily Activity Streak</h3>
+<p class="scope">Consecutive days of verified repository commits and agent execution.</p>
+</article>
+<article class="card metric">
+<p class="metric-value">99.98%</p>
+<h3>Platform SLA Delivered</h3>
+<p class="scope">Lifted from 96% across 3 payment refactors supporting &gt;10M daily requests.</p>
+</article>
+<article class="card metric">
+<p class="metric-value">~3,000 TPS</p>
+<h3>Reverse-Geocoding Throughput</h3>
+<p class="scope">JVM in-memory service optimized on an 8-core / 16 GB instance.</p>
+</article>
+<article class="card metric">
+<p class="metric-value">18 Years</p>
+<h3>Distributed Systems Architecture</h3>
+<p class="scope">Payment, financial, and performance-critical systems engineering.</p>
+</article>
+</div>
+</section>
+<section id="principles" class="content-section" aria-labelledby="principles-title">
+<div class="section-head">
+<div>
+<p class="eyebrow">04 / PRINCIPLES</p>
+<h2 id="principles-title">Workflows Compound. Prompts Do Not.</h2>
+</div>
+<p class="section-note">Systems-minded decomposition, evidence before trust, and fail-closed gates.</p>
+</div>
+<div class="principles-grid">
+<div class="principle-notes">
+<article>
+<h3 class="micro-label">SYSTEM-MINDED DECOMPOSITION</h3>
+<p>Every engineering challenge is treated as an explicit architectural pipeline: input state, deterministic transformation, boundary validation, and feedback reconciliation. Prompts are transient; version-controlled workflows compound.</p>
+<p class="flow-line">Input → State → Rule → Workflow → Output → Feedback Loop</p>
+</article>
+<article>
+<h3 class="micro-label">EVIDENCE BEFORE TRUST</h3>
+<p>Status is not evidence, and claimed completion is not proof. Autonomous agent outputs must produce cryptographic audit receipts, pass schema reconciliation, and clear automated release gates before merging into production repositories.</p>
+<p class="flow-line">Execution Log → Receipt Hash → Provider Evidence → Gate Verification → Sealed Release</p>
+</article>
+</div>
+<div class="contract">
+<h3 class="micro-label">FAIL-CLOSED RELEASE GATE CONTRACT</h3>
+<figure class="code-panel">
+<figcaption>agent_gate_contract.py</figcaption>
+<pre tabindex="0" aria-label="Verification contract code">
+<code>@dataclass(frozen=True)
+class QualityReceipt:
+    release_id: str
+    evidence_hash: str
+    provider_signature: str
+    gate_status: Literal[&quot;PASS&quot;, &quot;BLOCKED&quot;]
+
+def verify_agent_output(receipt: QualityReceipt, expected_hash: str) -&gt; None:
+    &quot;&quot;&quot;Status is not evidence; claimed completion is not proof.&quot;&quot;&quot;
+    if receipt.evidence_hash != expected_hash:
+        raise VerificationError(&quot;BLOCKED: Hash drift detected in agent payload&quot;)
+    if receipt.gate_status != &quot;PASS&quot;:
+        raise VerificationError(&quot;BLOCKED: Missing provider-owned verification pass&quot;)</code>
+</pre>
+</figure>
+</div>
+</div>
+</section>
+<section id="logs" class="content-section" aria-labelledby="logs-title">
+<div class="section-head">
+<div>
+<p class="eyebrow">05 / LOGS</p>
+<h2 id="logs-title">Selected Engineering Logs &amp; Postmortems</h2>
+</div>
+<p class="section-note">Field notes from production multi-agent systems and distributed architectures.</p>
+</div>
+<div class="logs-list">
+<article class="card log-card">
+<div>
+<h3>The 100 Billion Token Postmortem: Why Prompts Fail and Workflows Compound</h3>
+<div class="tags">
+<span>Multi-Agent Architecture</span>
+<span>Failure Modes</span>
+</div>
+</div>
+<div class="log-summary">
+<p>A detailed breakdown of failure patterns observed across 100B+ tokens, why unconstrained agents experience drift, and how deterministic JSON wire contracts restore execution stability.</p>
+<!-- {POST_1_URL}: inactive until the approved URL is available. -->
+<span class="btn pending" role="link" aria-disabled="true">Upcoming in Batch 1</span>
+</div>
+</article>
+<article class="card log-card">
+<div>
+<h3>Fail-Closed Quality Gates: Verification Boundaries in Agent Systems</h3>
+<div class="tags">
+<span>Verification Engineering</span>
+<span>Quality Shield</span>
+</div>
+</div>
+<div class="log-summary">
+<p>Techniques for preventing autonomous agents from hallucinating passing test suites: cryptographic audit receipts, sealed role hand-offs, and gates that halt on missing evidence.</p>
+<!-- {POST_2_URL}: inactive until the approved URL is available. -->
+<span class="btn pending" role="link" aria-disabled="true">Upcoming in Batch 1</span>
+</div>
+</article>
+<article class="card log-card">
+<div>
+<h3>Autonomous Media Operations: No-Camera Production from Git History</h3>
+<div class="tags">
+<span>CognitoBrand</span>
+<span>Autonomous Media</span>
+</div>
+</div>
+<div class="log-summary">
+<p>How CognitoBrand extracts raw commit histories and execution logs to autonomously draft technical essays and video scripts—no camera appearances, AI-narrated, and built from real code history.</p>
+<!-- {POST_3_URL}: inactive until the approved URL is available. -->
+<span class="btn pending" role="link" aria-disabled="true">Upcoming in Batch 1</span>
+</div>
+</article>
+</div>
+</section>
+<section id="channels" class="content-section" aria-labelledby="channels-title">
+<div class="section-head">
+<div>
+<p class="eyebrow">06 / CHANNELS</p>
+<h2 id="channels-title">Public Channels &amp; Autonomous Media</h2>
+</div>
+<p class="section-note">Where systems architecture, engineering logs, and autonomous media are published.</p>
+</div>
+<div class="channels-grid">
+<article class="card channel-card">
+<h3>X (Twitter)</h3>
+<p class="handle">@DerrickXu139635</p>
+<div class="tags">
+<span>Primary Hub</span>
+<span>Daily Logs</span>
+</div>
+<p>Primary technical broadcasting channel. Daily field notes on multi-agent development, distributed architecture, and failure postmortems.</p>
+<div class="actions">
+<a class="btn primary" href="https://x.com/DerrickXu139635" rel="noopener">Follow on X</a>
+</div>
+</article>
+<article class="card channel-card">
+<!-- {LINKEDIN_PERSONAL_URL}: unknown. -->
+<h3>LinkedIn</h3>
+<p class="handle">Derrick Xu · CognitoBrand</p>
+<div class="tags">
+<span>Essays</span>
+<span>Architecture</span>
+</div>
+<p>Systems engineering essays, enterprise architecture reflections, and CognitoBrand company announcements.</p>
+<div class="actions">
+<!-- {LINKEDIN_PERSONAL_URL}: inactive until the approved URL is available. -->
+<span class="btn pending" role="link" aria-disabled="true">Connect on LinkedIn</span>
+<a class="btn" href="https://www.linkedin.com/company/144000030/" rel="noopener">CognitoBrand Page</a>
+</div>
+</article>
+<article class="card channel-card">
+<!-- {YOUTUBE_HANDLE} and {YOUTUBE_URL}: unknown; coming soon. -->
+<h3>YouTube</h3>
+<p class="handle">COMING SOON</p>
+<div class="tags">
+<span>Video</span>
+<span>System Visualizers</span>
+</div>
+<p>Autonomous visual architectures and execution walkthroughs generated directly from code history and system records, featuring AI-narrated technical breakdowns.</p>
+<div class="actions">
+<!-- {YOUTUBE_URL}: inactive until the approved URL is available. -->
+<span class="btn pending" role="link" aria-disabled="true">Subscribe on YouTube</span>
+</div>
+</article>
+<article class="card channel-card">
+<!-- {TIKTOK_HANDLE} and {TIKTOK_URL}: unknown; coming soon. -->
+<h3>Instagram &amp; TikTok</h3>
+<p class="handle">@derrick.xu841</p>
+<div class="tags">
+<span>Short-form</span>
+<span>Diagrams</span>
+</div>
+<p>Visual systems architecture diagrams, workflow animations, and autonomous short-form engineering clips.</p>
+<div class="actions">
+<a class="btn" href="https://www.instagram.com/derrick.xu841/" rel="noopener">Follow on Instagram</a>
+<!-- {TIKTOK_URL}: inactive until the approved URL is available. -->
+<span class="btn pending" role="link" aria-disabled="true">Follow on TikTok</span>
+</div>
+</article>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap footer-grid">
+<div>
+<p class="footer-heading">DERRICK XU</p>
+<p class="footer-tagline">Real systems. Built with AI.</p>
+<p>Autonomous media produced by CognitoBrand agents directly from authentic code history, execution logs, and system records. No on-camera presence. AI-narrated.</p>
+</div>
+<div>
+<p class="footer-heading">COMPLIANCE</p>
+<nav aria-label="Compliance">
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Service</a>
+</nav>
+</div>
+<div>
+<p class="footer-heading">CONTACT</p>
+<p>For technical inquiries, system architecture discussions, and product collaboration:</p>
+<a class="contact-link" href="mailto:derrick.xu84@gmail.com">derrick.xu84@gmail.com</a>
+<p class="copyright">© 2026 Derrick Xu. Static, tracker-free site.</p>
+</div>
+</div>
+</footer>
+<script>
+document.querySelector('.mobile-nav').addEventListener('click', event => {
+  if (event.target.closest('a')) event.currentTarget.open = false;
+});
+(() => {
+  const $ = id => document.getElementById(id), display = $('usage-total');
+  const format = new Intl.NumberFormat('en-CA');
+  const dateFormat = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Edmonton', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const claudeRecordedTokens = 15894738589;
+  let motionEnabled = !reduced.matches, shown = 0, target = null, frame = 0, visible = false, entered = false;
+  function paint(value) {
+    shown = Math.round(value);
+    display.dataset.count = format.format(shown);
+    display.innerHTML = Array.from(format.format(shown), (digit, i) => digit === ',' ? '<span aria-hidden="true">,</span>' : '<span class="token-digit" aria-hidden="true" style="--digit-index:' + i + '"><span class="token-reel"><span class="token-glyph">' + digit + '</span><span class="token-glyph">' + digit + '</span></span></span>').join('');
+  }
+  function stop() {
+    cancelAnimationFrame(frame);
+    display.classList.remove('is-counting', 'is-updated', 'is-rolling');
+    if (target !== null) paint(target);
+  }
+  function controls() {
+    $('usage-motion').disabled = $('usage-replay').disabled = target === null || reduced.matches;
+    $('usage-motion').textContent = reduced.matches ? 'Motion disabled' : motionEnabled ? 'Pause motion' : 'Play motion';
+    $('usage-motion').setAttribute('aria-pressed', String(motionEnabled));
+  }
+  function roll() {
+    if (!motionEnabled || reduced.matches || document.hidden || !visible || target === null) return;
+    display.classList.remove('is-rolling');
+    void display.offsetWidth;
+    display.classList.add('is-rolling');
+  }
+  function animate() {
+    stop();
+    if (!motionEnabled || reduced.matches || document.hidden) return;
+    paint(0);
+    const start = performance.now();
+    display.classList.add('is-counting');
+    function tick(now) {
+      const progress = Math.min(1, (now - start) / 4500);
+      paint(target * (1 - Math.pow(1 - progress, 3)));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+      else { display.classList.remove('is-counting'); display.classList.add('is-updated'); roll(); }
+    }
+    frame = requestAnimationFrame(tick);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      visible = entries.some(entry => entry.isIntersecting);
+      if (visible && target !== null && !entered) { entered = true; animate(); }
+    }).observe(display);
+  } else visible = true;
+  $('usage-motion').addEventListener('click', () => {
+    if (reduced.matches) return;
+    motionEnabled = !motionEnabled;
+    controls();
+    if (motionEnabled) roll(); else stop();
+  });
+  $('usage-replay').addEventListener('click', () => { if (target !== null) animate(); });
+  reduced.addEventListener('change', () => { motionEnabled = !reduced.matches; stop(); controls(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  window.addEventListener('pageshow', event => { if (event.persisted) stop(); });
+  controls();
+  async function loadUsage() {
+    try {
+      const response = await fetch('usage.json');
+      if (!response.ok) throw Error('Snapshot unavailable');
+      const data = await response.json(), s = data.summary;
+      const fields = ['lifetimeTokens', 'peakDailyTokens', 'longestRunningTurnSec', 'longestStreakDays', 'currentStreakDays'];
+      if (!s || !fields.every(key => Number.isSafeInteger(s[key]) && s[key] >= 0) || typeof data.updated_at !== 'string' || !Number.isFinite(Date.parse(data.updated_at))) throw Error('Invalid snapshot');
+      const combined = s.lifetimeTokens + claudeRecordedTokens;
+      if (!Number.isSafeInteger(combined)) throw Error('Combined total out of range');
+      // Validate and format everything before publishing any snapshot values.
+      const updated = dateFormat.format(new Date(data.updated_at));
+      const mins = Math.round(s.longestRunningTurnSec / 60);
+      $('usage-exact').textContent = format.format(combined);
+      $('usage-codex').textContent = format.format(s.lifetimeTokens);
+      $('usage-peak').textContent = format.format(s.peakDailyTokens);
+      $('usage-turn').textContent = Math.floor(mins / 60) + 'h ' + mins % 60 + 'm';
+      $('usage-longest').textContent = s.longestStreakDays + ' days';
+      $('usage-streak').textContent = s.currentStreakDays + ' days';
+      $('usage-updated').textContent = updated;
+      $('usage-updated').dateTime = data.updated_at;
+      target = combined;
+      display.title = format.format(target) + ' recorded tokens';
+      display.setAttribute('role', 'img');
+      display.setAttribute('aria-label', format.format(target) + ' combined recorded tokens');
+      paint(target);
+      controls();
+      $('usage-status').textContent = '';
+      if (visible && !entered) { entered = true; animate(); }
+    } catch {
+      display.textContent = 'Unavailable';
+      $('usage-status').textContent = 'The published usage.json snapshot could not be loaded or validated. Codex statistics and the combined total are unavailable; the fixed Claude Code history remains below.';
+    }
+  }
+  loadUsage();
+})();
+</script>
+</body>
+</html>
