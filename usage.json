@@ -11,10 +11,10 @@
   "claude_code": {
     "baseline_tokens": 15894738589,
     "baseline_until": "2026-04-24",
-    "since_tokens": 27386909092,
-    "since_records": 72889,
-    "total_tokens": 43281647681
+    "since_tokens": 27389119194,
+    "since_records": 72894,
+    "total_tokens": 43283857783
   },
-  "generated_at": "2026-10-16T02:24:22.641612Z",
+  "generated_at": "2026-10-16T02:24:47.425393Z",
   "next_update_at": "2026-10-16T12:00:00Z"
 }
