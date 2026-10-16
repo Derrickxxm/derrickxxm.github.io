@@ -93,15 +93,15 @@
 <div class="usage-label">Recorded tokens · Codex + Claude Code</div>
 <div id="usage-total" class="usage-main">Loading…</div>
 <div class="usage-label"><span id="usage-exact">Unavailable</span> combined recorded tokens</div>
-<div class="usage-label usage-breakdown">Codex <span id="usage-codex">Unavailable</span> + Claude Code <span>15,894,738,589</span>
+<div class="usage-label usage-breakdown">Codex <span id="usage-codex">Unavailable</span> + Claude Code <span id="usage-claude">Unavailable</span>
 </div>
 <div class="usage-controls"><button id="usage-motion" type="button" aria-pressed="false" disabled>Pause motion</button><button id="usage-replay" type="button" disabled>Replay count-up</button>
 </div>
 </div>
-<div class="usage-meta"><span>Snapshot updated · Edmonton time</span><time id="usage-updated">Unavailable</time><span>Source: Codex account usage</span><span>Updated when the site is republished</span>
+<div class="usage-meta"><span>Snapshot updated · Edmonton time</span><time id="usage-updated">Unavailable</time><span>Source: Codex account usage</span><span>Updated daily</span><span id="usage-next">Unavailable</span>
 </div>
 </div>
-<p class="usage-note">Codex: official account total. Claude Code: partial retained logs, Jan 15–Apr 24, 2026 (UTC), including cache. Different coverage and reporting methods; not a complete cross-platform lifetime total.</p>
+<p class="usage-note">Codex: official account summary. Claude Code: retained-log baseline plus daily accumulated local usage, including cache. Different coverage and reporting methods; not a complete cross-platform lifetime total.</p>
 <div class="usage-label usage-milestones">Codex account milestones</div>
 <div class="usage-stats">
 <div class="usage-stat"><strong id="usage-peak">Unavailable</strong><span>Peak daily tokens</span>
@@ -118,15 +118,15 @@
 <details class="scope-details">
 <summary>Source &amp; published snapshot</summary>
 <p>The Codex portion comes from the five account-wide aggregate fields in this site's usage.json, with its updated_at timestamp. These are an official account summary, not a sum of local thread totals. Usage measures activity, not software quality or a billing amount.</p>
-<p>This static page reads usage.json once when loaded and adds the fixed Claude Code historical count. It displays the snapshot timestamp in America/Edmonton. Updated when the site is republished; this page does not check a live account or poll for updates.</p>
+<p>This static page reads usage.json once when loaded, including the accumulated Claude Code total. It displays the snapshot timestamp in America/Edmonton. Updated daily; this page does not check a live account or poll for updates.</p>
 <p>The displayed fields are lifetime tokens, peak daily tokens, longest task duration, longest activity streak, and current activity streak. Conversation content, task names, account credentials, and session details are not displayed.</p>
 <p><a href="usage.json" target="_blank" rel="noopener">View aggregate data</a></p>
 </details>
 <details class="scope-details">
 <summary>Claude Code history & coverage</summary>
-<p>Input + output: 34,074,539 tokens. 63,098 deduplicated usage records. This historical snapshot is fixed; the Codex portion comes from the published usage.json snapshot.</p>
+<p>Claude Code = retained-log history Jan 15–Apr 24, 2026 (fixed baseline) plus usage recorded since, accumulated daily from local logs (deduplicated; never decreases). The baseline contains 63,098 deduplicated usage records and 34,074,539 input + output tokens.</p>
 <div class="history-table">
-<table><caption>Recorded Claude Code tokens, including cache · UTC months</caption>
+<table><caption>Claude Code fixed baseline tokens, including cache · UTC months</caption>
 <thead>
 <tr><th scope="col">Month</th><th scope="col">Tokens</th></tr></thead>
 <tbody>
@@ -456,7 +456,6 @@ document.querySelector('.mobile-nav').addEventListener('click', event => {
   const format = new Intl.NumberFormat('en-CA');
   const dateFormat = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Edmonton', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const claudeRecordedTokens = 15894738589;
   let motionEnabled = !reduced.matches, shown = 0, target = null, frame = 0, visible = false, entered = false;
   function paint(value) {
     shown = Math.round(value);
@@ -517,13 +516,16 @@ document.querySelector('.mobile-nav').addEventListener('click', event => {
       const data = await response.json(), s = data.summary;
       const fields = ['lifetimeTokens', 'peakDailyTokens', 'longestRunningTurnSec', 'longestStreakDays', 'currentStreakDays'];
       if (!s || !fields.every(key => Number.isSafeInteger(s[key]) && s[key] >= 0) || typeof data.updated_at !== 'string' || !Number.isFinite(Date.parse(data.updated_at))) throw Error('Invalid snapshot');
-      const combined = s.lifetimeTokens + claudeRecordedTokens;
+      const claude = data.claude_code?.total_tokens, nextUpdate = Date.parse(data.next_update_at);
+      if (!Number.isSafeInteger(claude) || claude < 0 || typeof data.next_update_at !== 'string' || !Number.isFinite(nextUpdate)) throw Error('Invalid Claude total or schedule');
+      const combined = s.lifetimeTokens + claude;
       if (!Number.isSafeInteger(combined)) throw Error('Combined total out of range');
       // Validate and format everything before publishing any snapshot values.
       const updated = dateFormat.format(new Date(data.updated_at));
       const mins = Math.round(s.longestRunningTurnSec / 60);
       $('usage-exact').textContent = format.format(combined);
       $('usage-codex').textContent = format.format(s.lifetimeTokens);
+      $('usage-claude').textContent = format.format(claude);
       $('usage-peak').textContent = format.format(s.peakDailyTokens);
       $('usage-turn').textContent = Math.floor(mins / 60) + 'h ' + mins % 60 + 'm';
       $('usage-longest').textContent = s.longestStreakDays + ' days';
@@ -536,11 +538,17 @@ document.querySelector('.mobile-nav').addEventListener('click', event => {
       display.setAttribute('aria-label', format.format(target) + ' combined recorded tokens');
       paint(target);
       controls();
+      const countdown = () => {
+        const remaining = nextUpdate - Date.now(), minutes = Math.ceil(remaining / 60000);
+        $('usage-next').textContent = remaining <= 0 ? 'Update pending' : 'Next update in ' + Math.floor(minutes / 60) + 'h ' + minutes % 60 + 'm';
+      };
+      countdown();
+      setInterval(countdown, 30000);
       $('usage-status').textContent = '';
       if (visible && !entered) { entered = true; animate(); }
     } catch {
       display.textContent = 'Unavailable';
-      $('usage-status').textContent = 'The published usage.json snapshot could not be loaded or validated. Codex statistics and the combined total are unavailable; the fixed Claude Code history remains below.';
+      $('usage-status').textContent = 'The published usage.json snapshot could not be loaded or validated. Codex statistics, the Claude Code total, and the combined total are unavailable; the fixed Claude Code baseline remains below.';
     }
   }
   loadUsage();
