@@ -511,7 +511,7 @@ document.querySelector('.mobile-nav').addEventListener('click', event => {
   controls();
   async function loadUsage() {
     try {
-      const response = await fetch('usage.json');
+      const response = await fetch('usage.json', { cache: 'no-store' }); // daily snapshot: bypass the 10-minute Pages cache
       if (!response.ok) throw Error('Snapshot unavailable');
       const data = await response.json(), s = data.summary;
       const fields = ['lifetimeTokens', 'peakDailyTokens', 'longestRunningTurnSec', 'longestStreakDays', 'currentStreakDays'];
