@@ -1,20 +1,20 @@
 {
   "source": "Codex account usage API",
-  "updated_at": "2026-10-19T11:54:40.885283+00:00",
+  "updated_at": "2026-10-20T11:52:16.508216+00:00",
   "summary": {
-    "lifetimeTokens": 100128509657,
-    "peakDailyTokens": 1808029362,
+    "lifetimeTokens": 102415101189,
+    "peakDailyTokens": 2168598819,
     "longestRunningTurnSec": 96850,
     "longestStreakDays": 71,
-    "currentStreakDays": 27
+    "currentStreakDays": 28
   },
   "claude_code": {
     "baseline_tokens": 15894738589,
     "baseline_until": "2026-04-24",
-    "since_tokens": 30037090068,
-    "since_records": 80609,
-    "total_tokens": 45931828657
+    "since_tokens": 30221553938,
+    "since_records": 81424,
+    "total_tokens": 46116292527
   },
-  "generated_at": "2026-10-19T12:00:14.918439Z",
-  "next_update_at": "2026-10-20T12:00:00Z"
+  "generated_at": "2026-10-20T12:00:15.011649Z",
+  "next_update_at": "2026-10-21T12:00:00Z"
 }
