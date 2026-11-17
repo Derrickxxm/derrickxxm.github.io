@@ -35,6 +35,21 @@ class RefreshUsageTests(unittest.TestCase):
     def refresh(self, **kwargs):
         return usage.refresh([self.logs], self.ledger, self.out, **kwargs)
 
+    def test_record_split_by_raw_newline_is_rejoined_and_reported(self):
+        usage.REJOINED.clear()
+        self.addCleanup(usage.REJOINED.clear)
+        split = '{"type": "user", "message": {"content": "line one\nline two\nline three"}}'
+        (self.logs / 'session.jsonl').write_text(split + '\n' + json.dumps(self.row()) + '\n')
+        self.assertEqual(self.refresh()['claude_code']['since_tokens'], 10)
+        self.assertEqual(len(usage.REJOINED), 1)
+        self.assertTrue(usage.REJOINED[0].endswith('session.jsonl:1-3'))
+
+    def test_unrecoverable_line_still_fails(self):
+        (self.logs / 'session.jsonl').write_text('{"type": "user", "broken\n' + json.dumps(self.row()) + '\n')
+        with self.assertRaisesRegex(ValueError, 'session.jsonl:1'):
+            self.refresh()
+        self.assertFalse(self.out.exists())
+
     def test_dedup_across_files_and_roots_and_existing_value_unchanged(self):
         self.write([self.row(), self.row()])
         nested = self.logs / 'nested'

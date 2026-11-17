@@ -53,6 +53,37 @@ def validate_codex(data):
 
 
 EXCLUDED = set()  # explicit --exclude paths (printed in the summary), never silent
+REJOINED = []  # records split by raw newlines and rejoined (printed in the summary), never silent
+MAX_REJOIN_LINES = 20
+
+
+def read_rows(path):
+    """Yield (line_number, row). A record split by raw newlines inside a string is
+    rejoined explicitly and recorded in REJOINED; anything else malformed raises."""
+    lines = path.read_text(encoding='utf-8').split('\n')
+    index = 0
+    while index < len(lines):
+        line = lines[index]
+        number = index + 1
+        index += 1
+        if not line.strip():
+            continue
+        try:
+            yield number, json.loads(line)
+            continue
+        except ValueError as error:
+            first_error = error
+        for end in range(index, min(index + MAX_REJOIN_LINES, len(lines))):
+            try:
+                row = json.loads('\n'.join(lines[number - 1:end + 1]), strict=False)
+            except ValueError:
+                continue
+            REJOINED.append(f'{path}:{number}-{end + 1}')
+            index = end + 1
+            yield number, row
+            break
+        else:
+            raise ValueError(f'{path}:{number}: {first_error}')
 
 
 def collect_records(directories, ledger):
@@ -77,10 +108,8 @@ def collect_records(directories, ledger):
                 if not filename.endswith('.jsonl'):
                     continue
                 path = Path(folder) / filename
-                with path.open(encoding='utf-8') as stream:
-                    for number, line in enumerate(stream, 1):
+                for number, row in read_rows(path):
                         try:
-                            row = json.loads(line)
                             if not isinstance(row, dict):
                                 raise ValueError('Expected a JSON object')
                             if row.get('type') != 'assistant':
@@ -171,7 +200,7 @@ def main():
         print(f'Usage refresh failed: {error}', file=sys.stderr)
         return 1
     claude = result['claude_code']
-    print(f"excluded: {sorted(EXCLUDED)} | Codex {result['summary']['lifetimeTokens']} | Claude Code {claude['total_tokens']} ({claude['since_records']} accumulated records) | next {result['next_update_at']}")
+    print(f"excluded: {sorted(EXCLUDED)} | rejoined split records: {REJOINED} | Codex {result['summary']['lifetimeTokens']} | Claude Code {claude['total_tokens']} ({claude['since_records']} accumulated records) | next {result['next_update_at']}")
     return 0
 
 
